@@ -1,5 +1,11 @@
+import { faFloppyDisk } from "@fortawesome/free-regular-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function SaveMyArticle(){
+    const onSaveClick=()=> {
+        
+    }
+
     return (
         <div id="saveMyArticle" style={{
             display:"grid",
@@ -13,6 +19,7 @@ function SaveMyArticle(){
             }}
             placeholder="content"></textarea>
             <input type="text" name="createdOn" value={Date()}/>
+            <button onClick={onSaveClick} ><FontAwesomeIcon icon={faFloppyDisk} /></button>
         </div>
     )
 }
