@@ -2,10 +2,13 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
+import Header from './header';
+import MyLayout from './layout';
 
 function Landing() {
     
     const location = useLocation();
+    const [isLoggedIn,setIsLoggedIn] = useState(false)
 
     useEffect(() => {
       const urlParams = new URLSearchParams(location.search);
@@ -16,6 +19,7 @@ function Landing() {
         // You can now use the code to get an access token from GitHub.
         // After getting the access token, you can set `isLoggedIn` in local storage.
         localStorage.setItem('isLoggedIn', 'true');
+        setIsLoggedIn(true)
       }
     }, [location]);
     
@@ -26,9 +30,15 @@ function Landing() {
 
     return (
       <div>
-        <h1>Welcome to mini blogs</h1>
-        <h2>You can Signin with Github</h2>
-        <button onClick={onButtonClick}><FontAwesomeIcon icon={faGithub} /> Login</button> 
+        {
+          !isLoggedIn && (
+            <div>
+            <Header text={"Welcome to Mini Blogs"} additionalText='You can Sign in with Github' />
+            <button onClick={onButtonClick}><FontAwesomeIcon icon={faGithub} /> Login</button> 
+            </div>
+          )
+        }
+       
       </div>
     );
    }
