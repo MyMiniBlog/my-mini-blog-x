@@ -13,15 +13,13 @@ function MainLayout() {
     return (
       <div>
         {
-      isLoggedIn &&   <Header text={'All the Best for Your New Article'} />
+      isLoggedIn &&
+      (<div>
+          <Header text={'All the Best for Your New Article'} />
+          <Logout /> 
+          <SaveMyArticle />
+      </div>)  
         }
-        {
-           isLoggedIn && <Logout /> 
-        }
-        { isLoggedIn && <SaveMyArticle />}
-        {/* {
-        isLoggedIn ? (<ShowMyArticle heading={'NugetArticle Heading'} content={'Blah.. blah..'} createdDate={''} />):(<p>Please log in.</p>)
-        } */}
       </div>
     );
    }
